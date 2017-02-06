@@ -28,7 +28,7 @@ namespace Cofoundry.Plugins.SiteMap
         public async Task<IEnumerable<SiteMapResource>> GetResourcesAsync()
         {
             var resources = new List<SiteMapResource>();
-            if (_permissionValidationService.HasPermission<PageReadPermission>()) return resources;
+            if (!_permissionValidationService.HasPermission<PageReadPermission>()) return resources;
 
             var pageRoutes = await _queryExecutor.GetAllAsync<PageRoute>();
             var allRules = _queryExecutor.GetAll<ICustomEntityRoutingRule>();
