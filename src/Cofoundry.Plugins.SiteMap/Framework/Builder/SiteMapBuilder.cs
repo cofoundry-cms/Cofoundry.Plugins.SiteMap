@@ -18,11 +18,11 @@ namespace Cofoundry.Plugins.SiteMap
     {
         #region constructor
 
-        private readonly ISiteUriResolver _uriResolver;
+        private readonly ISiteUrlResolver _uriResolver;
         private readonly IModelValidationService _modelValidationService;
 
         public SiteMapBuilder(
-            ISiteUriResolver uriResolver,
+            ISiteUrlResolver uriResolver,
             IModelValidationService modelValidationService
             )
         {
