@@ -14,6 +14,29 @@ namespace Cofoundry.Plugins.SiteMap
     /// </remarks>
     public class SiteMapResource
     {
+        #region constructors
+
+        public SiteMapResource() { }
+
+        public SiteMapResource(string url)
+        {
+            Url = url;
+        }
+
+        public SiteMapResource(string url, DateTime lastModifiedDate)
+            : this(url)
+        {
+            LastModifiedDate = lastModifiedDate;
+        }
+
+        public SiteMapResource(string url, DateTime lastModifiedDate, decimal priority)
+            : this(url, lastModifiedDate)
+        {
+            Priority = priority;
+        }
+
+        #endregion
+
         /// <summary>
         /// URL of the Resource. Can be relative.
         /// </summary>
