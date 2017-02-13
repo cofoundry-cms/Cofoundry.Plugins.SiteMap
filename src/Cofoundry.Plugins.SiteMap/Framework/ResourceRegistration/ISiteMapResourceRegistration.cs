@@ -11,6 +11,6 @@ namespace Cofoundry.Plugins.SiteMap
     /// </summary>
     public interface ISiteMapResourceRegistration
     {
-        IEnumerable<SiteMapResource> GetResources();
+        IEnumerable<ISiteMapResource> GetResources();
     }
 }

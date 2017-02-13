@@ -25,7 +25,7 @@ namespace Cofoundry.Plugins.SiteMap
             _permissionValidationService = permissionValidationService;
         }
 
-        public async Task<IEnumerable<SiteMapResource>> GetResourcesAsync()
+        public async Task<IEnumerable<ISiteMapResource>> GetResourcesAsync()
         {
             var resources = new List<SiteMapResource>();
             if (!_permissionValidationService.HasPermission<PageReadPermission>()) return resources;

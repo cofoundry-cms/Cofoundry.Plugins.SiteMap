@@ -38,7 +38,7 @@ namespace Cofoundry.Plugins.SiteMap
         /// The resources to include in the site map. These will be autiomatically
         /// ordered by priority when rendering.
         /// </summary>
-        public List<SiteMapResource> Resources { get; set; }
+        public List<ISiteMapResource> Resources { get; set; }
 
         /// <summary>
         /// Creates the SiteMap xml document.

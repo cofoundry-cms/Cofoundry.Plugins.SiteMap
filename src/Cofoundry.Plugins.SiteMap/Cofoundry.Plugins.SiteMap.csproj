@@ -120,6 +120,7 @@
     <Compile Include="Framework\Builder\SiteMapRenderer.cs" />
     <Compile Include="DefaultImplementation\CofoundryContentSiteMapResourceRegistration.cs" />
     <Compile Include="DefaultImplementation\SiteMapController.cs" />
+    <Compile Include="Framework\Models\ISiteMapResource.cs" />
     <Compile Include="Framework\Models\SiteMapResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Framework\Queries\GetAllSiteMapResourcesQueryHandler.cs" />

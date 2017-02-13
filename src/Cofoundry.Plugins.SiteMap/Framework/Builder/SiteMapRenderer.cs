@@ -30,7 +30,7 @@ namespace Cofoundry.Plugins.SiteMap
         /// </summary>
         public async Task<string> RenderToUTF8StringAsync()
         {
-            var siteMapResources = await _queryExecutor.GetAllAsync<SiteMapResource>();
+            var siteMapResources = await _queryExecutor.GetAllAsync<ISiteMapResource>();
             var builder = _siteMapBuilderFactory.Create();
             builder.Resources = siteMapResources.ToList();
 

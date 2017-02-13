@@ -12,7 +12,7 @@ namespace Cofoundry.Plugins.SiteMap
     /// <remarks>
     /// See http://www.sitemaps.org/en_GB/protocol.html
     /// </remarks>
-    public class SiteMapResource
+    public class SiteMapResource : ISiteMapResource
     {
         #region constructors
 

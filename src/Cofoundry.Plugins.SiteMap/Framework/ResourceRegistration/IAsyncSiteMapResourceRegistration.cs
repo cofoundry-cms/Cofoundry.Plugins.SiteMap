@@ -11,6 +11,6 @@ namespace Cofoundry.Plugins.SiteMap
     /// </summary>
     public interface IAsyncSiteMapResourceRegistration
     {
-        Task<IEnumerable<SiteMapResource>> GetResourcesAsync();
+        Task<IEnumerable<ISiteMapResource>> GetResourcesAsync();
     }
 }
