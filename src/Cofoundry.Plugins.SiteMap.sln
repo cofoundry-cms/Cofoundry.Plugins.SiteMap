@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cofoundry.Plugins.SiteMap", "Cofoundry.Plugins.SiteMap\Cofoundry.Plugins.SiteMap.csproj", "{4297D5F5-AA8C-4A26-8BA0-7505E4B4193F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cofoundry.Plugins.SiteMap", "Cofoundry.Plugins.SiteMap\Cofoundry.Plugins.SiteMap.csproj", "{EB0B3CB1-8AF1-41F9-97CA-5208BF17FA5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4297D5F5-AA8C-4A26-8BA0-7505E4B4193F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4297D5F5-AA8C-4A26-8BA0-7505E4B4193F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4297D5F5-AA8C-4A26-8BA0-7505E4B4193F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4297D5F5-AA8C-4A26-8BA0-7505E4B4193F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB0B3CB1-8AF1-41F9-97CA-5208BF17FA5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB0B3CB1-8AF1-41F9-97CA-5208BF17FA5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB0B3CB1-8AF1-41F9-97CA-5208BF17FA5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB0B3CB1-8AF1-41F9-97CA-5208BF17FA5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

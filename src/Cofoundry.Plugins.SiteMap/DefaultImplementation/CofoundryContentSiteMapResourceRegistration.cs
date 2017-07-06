@@ -15,29 +15,33 @@ namespace Cofoundry.Plugins.SiteMap
     {
         private readonly IQueryExecutor _queryExecutor;
         private readonly IPermissionValidationService _permissionValidationService;
+        private readonly IUserContextService _userContextService;
 
         public CofoundryContentSiteMapResourceRegistration(
             IQueryExecutor queryExecutor,
-            IPermissionValidationService permissionValidationService
+            IPermissionValidationService permissionValidationService,
+            IUserContextService userContextService
             )
         {
             _queryExecutor = queryExecutor;
             _permissionValidationService = permissionValidationService;
+            _userContextService = userContextService;
         }
 
         public async Task<IEnumerable<ISiteMapResource>> GetResourcesAsync()
         {
+            var userContext = await _userContextService.GetCurrentContextAsync();
             var resources = new List<SiteMapResource>();
-            if (!_permissionValidationService.HasPermission<PageReadPermission>()) return resources;
+            if (!_permissionValidationService.HasPermission<PageReadPermission>(userContext)) return resources;
 
             var pageRoutes = await _queryExecutor.GetAllAsync<PageRoute>();
-            var allRules = _queryExecutor.GetAll<ICustomEntityRoutingRule>();
+            var allRules = await _queryExecutor.GetAllAsync<ICustomEntityRoutingRule>();
 
             foreach (var pageRoute in pageRoutes.Where(p => p.IsPublished && p.ShowInSiteMap))
             {
                 if (pageRoute.PageType == PageType.CustomEntityDetails)
                 {
-                    if (_permissionValidationService.HasCustomEntityPermission<CustomEntityReadPermission>(pageRoute.CustomEntityDefinitionCode))
+                    if (_permissionValidationService.HasCustomEntityPermission<CustomEntityReadPermission>(pageRoute.CustomEntityDefinitionCode, userContext))
                     {
                         var routesQuery = new GetCustomEntityRoutesByDefinitionCodeQuery(pageRoute.CustomEntityDefinitionCode);
                         var allCustomEntityRoutes = await _queryExecutor.ExecuteAsync(routesQuery);
