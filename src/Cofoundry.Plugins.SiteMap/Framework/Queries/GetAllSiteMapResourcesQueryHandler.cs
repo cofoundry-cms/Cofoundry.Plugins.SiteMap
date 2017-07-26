@@ -12,12 +12,12 @@ namespace Cofoundry.Plugins.SiteMap
         : IAsyncQueryHandler<GetAllQuery<ISiteMapResource>, IEnumerable<ISiteMapResource>>
         , IIgnorePermissionCheckHandler
     {
-        private ISiteMapResourceRegistration[] _siteMapRegistrations;
-        private IAsyncSiteMapResourceRegistration[] _asyncSiteMapRegistrations;
+        private IEnumerable<ISiteMapResourceRegistration> _siteMapRegistrations;
+        private IEnumerable<IAsyncSiteMapResourceRegistration> _asyncSiteMapRegistrations;
 
         public GetAllSiteMapResourcesQueryHandler(
-            ISiteMapResourceRegistration[] siteMapRegistrations,
-            IAsyncSiteMapResourceRegistration[] asyncSiteMapRegistrations
+            IEnumerable<ISiteMapResourceRegistration> siteMapRegistrations,
+            IEnumerable<IAsyncSiteMapResourceRegistration> asyncSiteMapRegistrations
             )
         {
             _siteMapRegistrations = siteMapRegistrations;
