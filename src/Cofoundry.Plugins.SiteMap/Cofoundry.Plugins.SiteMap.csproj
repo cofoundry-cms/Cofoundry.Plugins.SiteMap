@@ -15,6 +15,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DefaultImplementation\sitemap.xsl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="DefaultImplementation\sitemap.xsl" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Cofoundry.Domain" Version="0.2.0-beta0022" />
   </ItemGroup>
 
