@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Cofoundry.Core.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Cofoundry.Plugins.SiteMap
 {
@@ -13,13 +14,13 @@ namespace Cofoundry.Plugins.SiteMap
     /// </summary>
     public class SiteMapBuilderFactory : ISiteMapBuilderFactory
     {
-        private readonly IResolutionContext _resolutionContext;
+        private readonly IServiceProvider _serviceProvider;
 
         public SiteMapBuilderFactory(
-            IResolutionContext resolutionContext
+            IServiceProvider serviceProvider
             )
         {
-            _resolutionContext = resolutionContext;
+            _serviceProvider = serviceProvider;
         }
 
         /// <summary>
@@ -27,7 +28,7 @@ namespace Cofoundry.Plugins.SiteMap
         /// </summary>
         public ISiteMapBuilder Create()
         {
-            return _resolutionContext.Resolve<SiteMapBuilder>();
+            return _serviceProvider.GetRequiredService<SiteMapBuilder>();
         }
     }
 }

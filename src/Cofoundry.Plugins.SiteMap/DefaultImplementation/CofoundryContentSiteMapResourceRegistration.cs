@@ -37,7 +37,7 @@ namespace Cofoundry.Plugins.SiteMap
             var pageRoutes = await _queryExecutor.GetAllAsync<PageRoute>();
             var allRules = await _queryExecutor.GetAllAsync<ICustomEntityRoutingRule>();
 
-            foreach (var pageRoute in pageRoutes.Where(p => p.IsPublished && p.ShowInSiteMap))
+            foreach (var pageRoute in pageRoutes.Where(p => p.IsPublished() && p.ShowInSiteMap))
             {
                 if (pageRoute.PageType == PageType.CustomEntityDetails)
                 {
@@ -69,7 +69,7 @@ namespace Cofoundry.Plugins.SiteMap
 
         private SiteMapResource MapCustomEntityResource(PageRoute pageRoute, CustomEntityRoute customEntityRoute, IEnumerable<ICustomEntityRoutingRule> allRules)
         {
-            var version = customEntityRoute.Versions.GetVersionRouting(WorkFlowStatusQuery.Published);
+            var version = customEntityRoute.Versions.GetVersionRouting(PublishStatusQuery.Published);
             if (version == null) return null;
 
             var rule = allRules.FirstOrDefault(r => r.RouteFormat == pageRoute.UrlPath);
@@ -77,8 +77,7 @@ namespace Cofoundry.Plugins.SiteMap
 
             var resource = new SiteMapResource();
             resource.Url = rule.MakeUrl(pageRoute, customEntityRoute);
-            // TODO: this would better be a publish date for the custom entity
-            resource.LastModifiedDate = version.CreateDate;
+            resource.LastModifiedDate = customEntityRoute.PublishDate;
             resource.Priority = GetPriority(pageRoute);
 
             return resource;
@@ -86,11 +85,10 @@ namespace Cofoundry.Plugins.SiteMap
 
         private SiteMapResource MapPageResource(PageRoute pageRoute)
         {
-            var version = pageRoute.Versions.GetVersionRouting(WorkFlowStatusQuery.Published);
+            var version = pageRoute.Versions.GetVersionRouting(PublishStatusQuery.Published);
             var resource = new SiteMapResource();
             resource.Url = pageRoute.FullPath;
-            // TODO: this would better be a publish date for the page
-            resource.LastModifiedDate = version.CreateDate;
+            resource.LastModifiedDate = pageRoute.PublishDate;
             resource.Priority = GetPriority(pageRoute);
 
             return resource;
@@ -99,7 +97,7 @@ namespace Cofoundry.Plugins.SiteMap
         private decimal GetPriority(PageRoute pageRoute)
         {
             var isDirectoryDefaultPage = pageRoute.IsDirectoryDefaultPage();
-            var isInSiteRoot = pageRoute.WebDirectory.IsSiteRoot();
+            var isInSiteRoot = pageRoute.PageDirectory.IsSiteRoot();
 
             // Site/Language root
             if (isDirectoryDefaultPage && isDirectoryDefaultPage) return 1;

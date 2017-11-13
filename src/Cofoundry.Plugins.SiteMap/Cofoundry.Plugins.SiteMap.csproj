@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     
     <PackageId>Cofoundry.Plugins.SiteMap</PackageId>
     <Description>Adds dynamic sitemap functionality to a Cofoundry site.</Description>
@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cofoundry.Domain" Version="0.2.0-beta0022" />
+    <PackageReference Include="Cofoundry.Domain" Version="0.2.0-beta0054" />
   </ItemGroup>
 
 </Project>
