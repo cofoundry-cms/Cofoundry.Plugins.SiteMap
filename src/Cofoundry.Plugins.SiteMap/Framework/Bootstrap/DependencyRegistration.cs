@@ -12,9 +12,8 @@ namespace Cofoundry.Plugins.SiteMap
         public void Register(IContainerRegister container)
         {
             container
-                .RegisterType<SiteMapBuilder, SiteMapBuilder>(new RegistrationOptions() { InstanceScope = InstanceScope.Transient })
-                .RegisterType<ISiteMapBuilderFactory, SiteMapBuilderFactory>()
-                .RegisterType<ISiteMapRenderer, SiteMapRenderer>()
+                .Register<ISiteMapBuilderFactory, SiteMapBuilderFactory>()
+                .Register<ISiteMapRenderer, SiteMapRenderer>()
 
                 .RegisterAll<ISiteMapResourceRegistration>()
                 .RegisterAll<IAsyncSiteMapResourceRegistration>()

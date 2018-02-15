@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Cofoundry.Core.DependencyInjection;
+using Cofoundry.Core.Validation;
+using Cofoundry.Core.Web;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Cofoundry.Plugins.SiteMap
@@ -14,13 +16,16 @@ namespace Cofoundry.Plugins.SiteMap
     /// </summary>
     public class SiteMapBuilderFactory : ISiteMapBuilderFactory
     {
-        private readonly IServiceProvider _serviceProvider;
+        private readonly ISiteUrlResolver _uriResolver;
+        private readonly IModelValidationService _modelValidationService;
 
         public SiteMapBuilderFactory(
-            IServiceProvider serviceProvider
+            ISiteUrlResolver uriResolver,
+            IModelValidationService modelValidationService
             )
         {
-            _serviceProvider = serviceProvider;
+            _uriResolver = uriResolver;
+            _modelValidationService = modelValidationService;
         }
 
         /// <summary>
@@ -28,7 +33,7 @@ namespace Cofoundry.Plugins.SiteMap
         /// </summary>
         public ISiteMapBuilder Create()
         {
-            return _serviceProvider.GetRequiredService<SiteMapBuilder>();
+            return new SiteMapBuilder(_uriResolver, _modelValidationService);
         }
     }
 }

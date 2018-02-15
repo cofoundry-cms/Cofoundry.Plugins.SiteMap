@@ -34,8 +34,8 @@ namespace Cofoundry.Plugins.SiteMap
             var resources = new List<SiteMapResource>();
             if (!_permissionValidationService.HasPermission<PageReadPermission>(userContext)) return resources;
 
-            var pageRoutes = await _queryExecutor.GetAllAsync<PageRoute>();
-            var allRules = await _queryExecutor.GetAllAsync<ICustomEntityRoutingRule>();
+            var pageRoutes = await _queryExecutor.ExecuteAsync(new GetAllPageRoutesQuery());
+            var allRules = await _queryExecutor.ExecuteAsync(new GetAllCustomEntityRoutingRulesQuery());
 
             foreach (var pageRoute in pageRoutes.Where(p => p.IsPublished() && p.ShowInSiteMap))
             {

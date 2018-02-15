@@ -9,7 +9,7 @@ using Cofoundry.Domain;
 namespace Cofoundry.Plugins.SiteMap
 {
     public class GetAllSiteMapResourcesQueryHandler 
-        : IAsyncQueryHandler<GetAllQuery<ISiteMapResource>, IEnumerable<ISiteMapResource>>
+        : IAsyncQueryHandler<GetAllSiteMapResourcesQuery, ICollection<ISiteMapResource>>
         , IIgnorePermissionCheckHandler
     {
         private IEnumerable<ISiteMapResourceRegistration> _siteMapRegistrations;
@@ -24,7 +24,7 @@ namespace Cofoundry.Plugins.SiteMap
             _asyncSiteMapRegistrations = asyncSiteMapRegistrations;
         }
 
-        public async Task<IEnumerable<ISiteMapResource>> ExecuteAsync(GetAllQuery<ISiteMapResource> query, IExecutionContext executionContext)
+        public async Task<ICollection<ISiteMapResource>> ExecuteAsync(GetAllSiteMapResourcesQuery query, IExecutionContext executionContext)
         {
             var allResources = new List<ISiteMapResource>();
 
