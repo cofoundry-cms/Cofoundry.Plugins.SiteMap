@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cofoundry.Domain" Version="0.3.2" />
+    <PackageReference Include="Cofoundry.Domain" Version="0.4.0-beta0024" />
   </ItemGroup>
 
 </Project>
