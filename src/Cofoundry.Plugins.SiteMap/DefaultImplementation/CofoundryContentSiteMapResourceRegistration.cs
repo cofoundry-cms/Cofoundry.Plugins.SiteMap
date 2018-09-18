@@ -100,7 +100,7 @@ namespace Cofoundry.Plugins.SiteMap
             var isInSiteRoot = pageRoute.PageDirectory.IsSiteRoot();
 
             // Site/Language root
-            if (isDirectoryDefaultPage && isDirectoryDefaultPage) return 1;
+            if (isInSiteRoot && isDirectoryDefaultPage) return 1;
             // Directory root
             if (isDirectoryDefaultPage) return 0.8m;
 
