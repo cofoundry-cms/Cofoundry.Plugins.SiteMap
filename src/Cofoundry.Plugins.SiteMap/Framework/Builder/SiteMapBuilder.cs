@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using Cofoundry.Core.Web;
 using Cofoundry.Core.Validation;
 using Cofoundry.Core.IO;
+using System.Globalization;
 
 namespace Cofoundry.Plugins.SiteMap
 {
@@ -71,7 +72,7 @@ namespace Cofoundry.Plugins.SiteMap
 
                 if (resource.Priority.HasValue)
                 {
-                    el.Add(new XElement(ns + "priority", resource.Priority.Value.ToString("0.0")));
+                    el.Add(new XElement(ns + "priority", resource.Priority.Value.ToString("0.0", CultureInfo.InvariantCulture)));
                 }
 
                 urlset.Add(el);
