@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cofoundry.Domain" Version="0.6.2-feaure-360-netc-0028" />
+    <PackageReference Include="Cofoundry.Domain" Version="0.7.0" />
   </ItemGroup>
 
 </Project>
