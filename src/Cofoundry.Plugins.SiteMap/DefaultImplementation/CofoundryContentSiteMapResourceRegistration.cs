@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Cofoundry.Domain;
+using Cofoundry.Domain.CQS;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Cofoundry.Domain;
-using Cofoundry.Domain.CQS;
 
 namespace Cofoundry.Plugins.SiteMap
 {
     /// <summary>
-    /// Resgitration for resources that should appear in the xml site map file.
+    /// Registration for resources that should appear in the xml site map file.
     /// </summary>
     public class CofoundryContentSiteMapResourceRegistration : IAsyncSiteMapResourceRegistration
     {
@@ -37,7 +35,7 @@ namespace Cofoundry.Plugins.SiteMap
             var pageRoutes = await _queryExecutor.ExecuteAsync(new GetAllPageRoutesQuery());
             var allRules = await _queryExecutor.ExecuteAsync(new GetAllCustomEntityRoutingRulesQuery());
 
-            foreach (var pageRoute in pageRoutes.Where(p => p.IsPublished() && p.ShowInSiteMap))
+            foreach (var pageRoute in pageRoutes.Where(p => p.IsPublished() && p.ShowInSiteMap && p.CanAccess(userContext)))
             {
                 if (pageRoute.PageType == PageType.CustomEntityDetails)
                 {
@@ -77,7 +75,7 @@ namespace Cofoundry.Plugins.SiteMap
 
             var resource = new SiteMapResource();
             resource.Url = rule.MakeUrl(pageRoute, customEntityRoute);
-            resource.LastModifiedDate = customEntityRoute.PublishDate;
+            resource.LastModifiedDate = customEntityRoute.LastPublishDate;
             resource.Priority = GetPriority(pageRoute);
 
             return resource;
@@ -85,10 +83,9 @@ namespace Cofoundry.Plugins.SiteMap
 
         private SiteMapResource MapPageResource(PageRoute pageRoute)
         {
-            var version = pageRoute.Versions.GetVersionRouting(PublishStatusQuery.Published);
             var resource = new SiteMapResource();
-            resource.Url = pageRoute.FullPath;
-            resource.LastModifiedDate = pageRoute.PublishDate;
+            resource.Url = pageRoute.FullUrlPath;
+            resource.LastModifiedDate = pageRoute.LastPublishDate;
             resource.Priority = GetPriority(pageRoute);
 
             return resource;

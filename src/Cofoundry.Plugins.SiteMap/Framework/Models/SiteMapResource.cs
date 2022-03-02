@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace Cofoundry.Plugins.SiteMap
@@ -14,8 +11,6 @@ namespace Cofoundry.Plugins.SiteMap
     /// </remarks>
     public class SiteMapResource : ISiteMapResource
     {
-        #region constructors
-
         public SiteMapResource() { }
 
         public SiteMapResource(string url)
@@ -34,8 +29,6 @@ namespace Cofoundry.Plugins.SiteMap
         {
             Priority = priority;
         }
-
-        #endregion
 
         /// <summary>
         /// URL of the Resource. Can be relative.

@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Cofoundry.Domain;
 using Cofoundry.Domain.CQS;
-using Cofoundry.Domain;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Cofoundry.Plugins.SiteMap
 {
-    public class GetAllSiteMapResourcesQueryHandler 
-        : IAsyncQueryHandler<GetAllSiteMapResourcesQuery, ICollection<ISiteMapResource>>
+    public class GetAllSiteMapResourcesQueryHandler
+        : IQueryHandler<GetAllSiteMapResourcesQuery, ICollection<ISiteMapResource>>
         , IIgnorePermissionCheckHandler
     {
         private IEnumerable<ISiteMapResourceRegistration> _siteMapRegistrations;
