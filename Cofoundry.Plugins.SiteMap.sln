@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cofoundry.Plugins.SiteMap", "Cofoundry.Plugins.SiteMap\Cofoundry.Plugins.SiteMap.csproj", "{EB0B3CB1-8AF1-41F9-97CA-5208BF17FA5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cofoundry.Plugins.SiteMap", "src\Cofoundry.Plugins.SiteMap\Cofoundry.Plugins.SiteMap.csproj", "{EB0B3CB1-8AF1-41F9-97CA-5208BF17FA5A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SitemapExample", "SitemapExample\SitemapExample.csproj", "{16753557-7C98-46B4-925A-F2E18F869974}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SitemapExample", "src\SitemapExample\SitemapExample.csproj", "{16753557-7C98-46B4-925A-F2E18F869974}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{2A5BFC8A-1F5F-414C-B67F-964364273F8A}"
 EndProject

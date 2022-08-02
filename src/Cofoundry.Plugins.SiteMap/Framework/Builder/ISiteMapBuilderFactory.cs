@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿namespace Cofoundry.Plugins.SiteMap;
 
-namespace Cofoundry.Plugins.SiteMap
+/// <summary>
+/// Factory for creating concrete ISiteMapBuilder objects.
+/// </summary>
+public interface ISiteMapBuilderFactory
 {
     /// <summary>
-    /// Factory for creating concrete ISiteMapBuilder objects.
+    /// Creates a new instance of an ISiteMapBuilder
     /// </summary>
-    public interface ISiteMapBuilderFactory
-    {
-        /// <summary>
-        /// Creates a new instance of an ISiteMapBuilder
-        /// </summary>
-        ISiteMapBuilder Create();
-    }
+    ISiteMapBuilder Create();
 }

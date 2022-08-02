@@ -1,21 +1,16 @@
 ﻿using Cofoundry.Plugins.SiteMap;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace SitemapExample.Cofoundry
+namespace SitemapExample.Cofoundry;
+
+public class SiteMapResourceRegistration : ISiteMapResourceRegistration
 {
-    public class SiteMapResourceRegistration : ISiteMapResourceRegistration
+    public IEnumerable<ISiteMapResource> GetResources()
     {
-        public IEnumerable<ISiteMapResource> GetResources()
+        yield return new SiteMapResource()
         {
-            yield return new SiteMapResource()
-            {
-                Url = "/test",
-                LastModifiedDate = DateTime.UtcNow,
-                Priority = 0.7m
-            };
-        }
+            Url = "/test",
+            LastModifiedDate = DateTime.UtcNow,
+            Priority = 0.7m
+        };
     }
 }
