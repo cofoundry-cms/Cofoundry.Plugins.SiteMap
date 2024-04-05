@@ -1,4 +1,4 @@
-﻿namespace Cofoundry.Plugins.SiteMap;
+namespace Cofoundry.Plugins.SiteMap;
 
 /// <summary>
 /// A helper class that renders all registered site map resources
@@ -26,7 +26,7 @@ public class SiteMapRenderer : ISiteMapRenderer
     {
         var siteMapResources = await _queryExecutor.ExecuteAsync(new GetAllSiteMapResourcesQuery());
         var builder = _siteMapBuilderFactory.Create();
-        builder.Resources = siteMapResources.ToList();
+        builder.Resources.AddRange(siteMapResources);
 
         return builder.ToString();
     }

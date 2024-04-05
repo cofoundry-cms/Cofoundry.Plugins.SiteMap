@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	<TargetFramework>net6.0</TargetFramework>
+	<TargetFramework>net8.0</TargetFramework>
 	<ImplicitUsings>enable</ImplicitUsings>
+	<Nullable>enable</Nullable>
 	  
     <PackageId>Cofoundry.Plugins.SiteMap</PackageId>
     <Description>Adds dynamic sitemap functionality to a Cofoundry site.</Description>
@@ -11,7 +12,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\net6.0\Cofoundry.Plugins.SiteMap.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\net8.0\Cofoundry.Plugins.SiteMap.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
   </PropertyGroup>
 
@@ -24,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cofoundry.Domain" Version="0.11.1" />
+    <PackageReference Include="Cofoundry.Domain" Version="0.11.5-dotnet-8-0031" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,11 @@
-﻿namespace Cofoundry.Plugins.SiteMap;
+namespace Cofoundry.Plugins.SiteMap;
 
 public class GetAllSiteMapResourcesQueryHandler
-    : IQueryHandler<GetAllSiteMapResourcesQuery, ICollection<ISiteMapResource>>
+    : IQueryHandler<GetAllSiteMapResourcesQuery, IReadOnlyCollection<ISiteMapResource>>
     , IIgnorePermissionCheckHandler
 {
-    private IEnumerable<ISiteMapResourceRegistration> _siteMapRegistrations;
-    private IEnumerable<IAsyncSiteMapResourceRegistration> _asyncSiteMapRegistrations;
+    private readonly IEnumerable<ISiteMapResourceRegistration> _siteMapRegistrations;
+    private readonly IEnumerable<IAsyncSiteMapResourceRegistration> _asyncSiteMapRegistrations;
 
     public GetAllSiteMapResourcesQueryHandler(
         IEnumerable<ISiteMapResourceRegistration> siteMapRegistrations,
@@ -16,7 +16,7 @@ public class GetAllSiteMapResourcesQueryHandler
         _asyncSiteMapRegistrations = asyncSiteMapRegistrations;
     }
 
-    public async Task<ICollection<ISiteMapResource>> ExecuteAsync(GetAllSiteMapResourcesQuery query, IExecutionContext executionContext)
+    public async Task<IReadOnlyCollection<ISiteMapResource>> ExecuteAsync(GetAllSiteMapResourcesQuery query, IExecutionContext executionContext)
     {
         var allResources = new List<ISiteMapResource>();
 

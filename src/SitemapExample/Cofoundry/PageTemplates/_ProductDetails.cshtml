@@ -9,8 +9,8 @@
 </p>
 <div>
     @(await Cofoundry.Template.Region("Body")
-                .AllowMultipleBlocks()
-                .AllowBlockType<PlainTextDataModel>()
-                .EmptyContentMinHeight(500)
-                .InvokeAsync())
+        .AllowMultipleBlocks()
+        .AllowBlockType<PlainTextDataModel>()
+        .EmptyContentMinHeight(500)
+        .InvokeAsync())
 </div>

@@ -1,14 +1,14 @@
-﻿namespace SitemapExample.Cofoundry.UserAreas;
+namespace SitemapExample.Cofoundry.UserAreas;
 
 public class MemberRole : IRoleDefinition
 {
     public const string MemberRoleCode = "MEM";
 
-    public string Title { get { return "Member"; } }
+    public string Title => "Member";
 
-    public string RoleCode { get { return MemberRoleCode; } }
+    public string RoleCode => MemberRoleCode;
 
-    public string UserAreaCode { get { return MemberUserArea.Code; } }
+    public string UserAreaCode => MemberUserArea.Code;
 
     public void ConfigurePermissions(IPermissionSetBuilder builder)
     {

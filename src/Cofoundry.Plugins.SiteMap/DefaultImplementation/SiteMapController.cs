@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
 using System.Text;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Cofoundry.Plugins.SiteMap;
 
@@ -26,12 +26,20 @@ public class SiteMapController : Controller
     [Route("sitemap.xsl")]
     public ContentResult SitemapXsl()
     {
+        const string xslResource = "Cofoundry.Plugins.SiteMap.DefaultImplementation.sitemap.xsl";
+
         var assembly = typeof(SiteMapController).GetTypeInfo().Assembly;
 
-        using (var stream = assembly.GetManifestResourceStream("Cofoundry.Plugins.SiteMap.DefaultImplementation.sitemap.xsl"))
-        using (var reader = new StreamReader(stream))
+        using var stream = assembly.GetManifestResourceStream(xslResource);
+
+        if (stream == null)
         {
-            return Content(reader.ReadToEnd(), "application/xml", Encoding.UTF8);
+            throw new FileNotFoundException($"Could not find sitemap XLS file at {xslResource}");
         }
+
+        using var reader = new StreamReader(stream);
+        var xslContent = reader.ReadToEnd();
+
+        return Content(xslContent, "application/xml", Encoding.UTF8);
     }
 }

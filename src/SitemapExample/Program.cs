@@ -1,5 +1,3 @@
-﻿using Cofoundry.Web;
-
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseLocalConfigFile();
 

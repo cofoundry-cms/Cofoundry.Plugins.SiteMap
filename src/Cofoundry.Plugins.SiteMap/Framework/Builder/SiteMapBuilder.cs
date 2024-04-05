@@ -1,20 +1,16 @@
-﻿using Cofoundry.Core.IO;
-using Cofoundry.Core.Validation;
-using Cofoundry.Core.Web;
 using System.Globalization;
 using System.Text;
 using System.Xml.Linq;
+using Cofoundry.Core.Validation;
+using Cofoundry.Core.Web;
 
 namespace Cofoundry.Plugins.SiteMap;
 
 /// <summary>
-/// Builds a site map xml file from a set of resources. Call ToString()
-/// to render the xml file to a UTF8 string.
+/// Default implementation of <see cref="ISiteMapBuilder"/>.
 /// </summary>
 public class SiteMapBuilder : ISiteMapBuilder
 {
-    #region constructor
-
     private readonly ISiteUrlResolver _uriResolver;
     private readonly IModelValidationService _modelValidationService;
 
@@ -27,15 +23,11 @@ public class SiteMapBuilder : ISiteMapBuilder
         _modelValidationService = modelValidationService;
     }
 
-    #endregion
-
-    #region public
-
     /// <summary>
     /// The resources to include in the site map. These will be autiomatically
     /// ordered by priority when rendering.
     /// </summary>
-    public List<ISiteMapResource> Resources { get; set; }
+    public List<ISiteMapResource> Resources { get; set; } = [];
 
     /// <summary>
     /// Creates the SiteMap xml document.
@@ -63,7 +55,7 @@ public class SiteMapBuilder : ISiteMapBuilder
 
             if (resource.LastModifiedDate.HasValue)
             {
-                el.Add(new XElement(ns + "lastmod", resource.LastModifiedDate.Value.ToString("yyyy-MM-dd")));
+                el.Add(new XElement(ns + "lastmod", resource.LastModifiedDate.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)));
             }
 
             if (resource.Priority.HasValue)
@@ -84,12 +76,10 @@ public class SiteMapBuilder : ISiteMapBuilder
     {
         var builder = new StringBuilder();
         var doc = ToXml();
-        using (var writer = new Utf8StringWriter(builder))
+        using (var writer = new Utf8StringWriter(builder, CultureInfo.InvariantCulture))
         {
             doc.Save(writer, SaveOptions.None);
         }
         return builder.ToString();
     }
-
-    #endregion
 }

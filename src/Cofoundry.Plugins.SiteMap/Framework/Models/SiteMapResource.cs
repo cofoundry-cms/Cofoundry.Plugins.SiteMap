@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cofoundry.Plugins.SiteMap;
 
@@ -34,7 +34,7 @@ public class SiteMapResource : ISiteMapResource
     /// </summary>
     [MaxLength(2048)]
     [Required]
-    public string Url { get; set; }
+    public string Url { get; set; } = string.Empty;
 
     /// <summary>
     /// The date of last modification of the file. 
